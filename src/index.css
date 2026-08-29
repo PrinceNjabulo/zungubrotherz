@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-heading: 'Oswald', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+}
+
+* {
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oswald', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #111;
+}
+::-webkit-scrollbar-thumb {
+  background: #F5A623;
+  border-radius: 3px;
+}
+
+.nav-link {
+  position: relative;
+  color: #e5e5e5;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-link:hover {
+  color: #F5A623;
+}
+.nav-link.active {
+  color: #F5A623;
+}
+
+.btn-primary {
+  background: #F5A623;
+  color: #111;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.75rem;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-block;
+}
+.btn-primary:hover {
+  background: #E8920A;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  border: 2px solid #F5A623;
+  color: #F5A623;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.75rem;
+  transition: background 0.2s, color 0.2s;
+  display: inline-block;
+}
+.btn-outline:hover {
+  background: #F5A623;
+  color: #111;
+}
+
+.section-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #F5A623;
+}
+
+.yellow-bar::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 4px;
+  background: #F5A623;
+  margin-bottom: 1rem;
+}
+
+.card-hover {
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+}
+
+input, textarea, select {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  color: #e5e5e5;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: 'Open Sans', sans-serif;
+}
+input:focus, textarea:focus {
+  border-color: #F5A623;
+}
+input::placeholder, textarea::placeholder {
+  color: #666;
+}
