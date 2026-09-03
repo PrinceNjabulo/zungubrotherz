@@ -882,6 +882,16 @@ function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    const lines = [
+      'New Quote Request',
+      `Name: ${form.name}`,
+      form.company ? `Company: ${form.company}` : null,
+      `Phone: ${form.phone}`,
+      `Email: ${form.email}`,
+      `Message: ${form.message}`,
+    ].filter(Boolean)
+    const waLink = `${WHATSAPP_LINK}?text=${encodeURIComponent(lines.join('\n'))}`
+    window.open(waLink, '_blank', 'noopener,noreferrer')
     setSent(true)
   }
 
@@ -939,9 +949,19 @@ function ContactPage() {
           <div style={{ background: '#111', border: '1px solid #1e1e1e', padding: '3rem' }}>
             {sent ? (
               <div style={{ textAlign: 'center', padding: '3rem 0' }}>
-                <div style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>✅</div>
-                <h3 style={{ fontFamily: 'Oswald, sans-serif', color: '#fff', fontSize: '1.75rem', marginBottom: '0.75rem' }}>Message Sent!</h3>
-                <p style={{ color: '#888', lineHeight: 1.7 }}>Thank you for reaching out. Our team will get back to you within 24 hours.</p>
+                <div style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>💬</div>
+                <h3 style={{ fontFamily: 'Oswald, sans-serif', color: '#fff', fontSize: '1.75rem', marginBottom: '0.75rem' }}>Opening WhatsApp…</h3>
+                <p style={{ color: '#888', lineHeight: 1.7, marginBottom: '1.5rem' }}>We've opened WhatsApp in a new tab with your details filled in — just hit send there to reach our team.</p>
+                <a href={`${WHATSAPP_LINK}?text=${encodeURIComponent([
+                  'New Quote Request',
+                  `Name: ${form.name}`,
+                  form.company ? `Company: ${form.company}` : null,
+                  `Phone: ${form.phone}`,
+                  `Email: ${form.email}`,
+                  `Message: ${form.message}`,
+                ].filter(Boolean).join('\n'))}`} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ fontSize: '0.85rem' }}>
+                  Didn't open? Click here
+                </a>
               </div>
             ) : (
               <>
@@ -973,7 +993,7 @@ function ContactPage() {
                     <textarea required rows={5} placeholder="Describe your equipment needs, project location, and timeline..." value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} style={{ resize: 'vertical' }} />
                   </div>
                   <button type="submit" className="btn-primary" style={{ fontSize: '0.9rem', textAlign: 'center' }}>
-                    Send Message →
+                    Send via WhatsApp →
                   </button>
                 </form>
               </>
